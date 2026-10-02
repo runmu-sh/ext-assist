@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "required": [
+    "account_id",
+    "messages"
+  ],
+  "properties": {
+    "account_id": {
+      "type": [
+        "string",
+        "integer"
+      ]
+    },
+    "account_key": {
+      "type": "string"
+    },
+    "account_name": {
+      "type": "string"
+    },
+    "assignee": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "age_mins": {
+      "type": "number"
+    },
+    "created": {
+      "type": "number"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "preview": {
+      "type": "string"
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/message"
+      }
+    }
+  },
+  "$defs": {
+    "message": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "html": {
+          "type": "string"
+        },
+        "sender": {
+          "type": "string"
+        },
+        "sender_html": {
+          "type": "string"
+        },
+        "visibility": {
+          "type": "string"
+        },
+        "ts": {
+          "type": [
+            "number",
+            "string"
+          ]
+        }
+      }
+    }
+  }
+}

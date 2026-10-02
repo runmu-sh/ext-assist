@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": ["account_id", "message"],
+  "properties": {
+    "account_id": { "type": ["string", "integer"] },
+    "message": { "$ref": "#/$defs/message" }
+  },
+  "$defs": {
+    "message": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "html": { "type": "string" },
+        "sender": { "type": "string" },
+        "sender_html": { "type": "string" },
+        "visibility": { "type": "string" },
+        "ts": { "type": ["number", "string"] }
+      }
+    }
+  }
+}

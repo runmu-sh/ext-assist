@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": [
+    "action",
+    "account_id"
+  ],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "view",
+        "claim",
+        "status",
+        "reply"
+      ]
+    },
+    "account_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

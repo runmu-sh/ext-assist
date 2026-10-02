@@ -1,6 +1,6 @@
 {
   "name": "@runmu.sh/ext-assist",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "The staff help desk: account-keyed help threads with claim, status and replies, driven by GMCP Client.Assist.* or another extension's API.",
   "keywords": [
     "assist",
@@ -24,6 +24,7 @@
   "files": [
     "dist",
     "src/types.ts",
+    "schema",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -31,13 +32,14 @@
     "build": "node scripts/build.mjs",
     "dev": "node scripts/dev.mjs",
     "typecheck": "tsc --noEmit",
-    "check": "node scripts/build.mjs --check"
+    "check": "node scripts/build.mjs --check",
+    "test": "node --test test/*.test.mjs"
   },
   "devDependencies": {
-    "@muclient/sdk": "npm:@runmu.sh/sdk@^1.6.0",
-    "@runmu.sh/dev": "^0.1.0",
-    "@runmu.sh/ext-kit": "^1.0.0",
+    "@muclient/sdk": "npm:@runmu.sh/sdk@^1.12.0",
+    "@runmu.sh/dev": "^0.2.0",
     "esbuild": "^0.28.2",
+    "happy-dom": "^20.0.0",
     "typescript": "^5.9.0"
   },
   "engines": {
@@ -45,7 +47,7 @@
   },
   "muclient": {
     "id": "assist",
-    "api": "^1.5",
+    "api": "^1.12",
     "source": "src/index.ts",
     "displayName": "Assist",
     "description": "The staff help desk: account-keyed help threads with claim, status and replies, driven by GMCP Client.Assist.* or another extension's API.",
@@ -61,11 +63,30 @@
         }
       ],
       "gmcp": [
-        "Client.Assist 1"
+        {
+          "package": "Client.Assist 1",
+          "messages": {
+            "Client.Assist.Inbox": {
+              "dir": "in",
+              "schema": "schema/inbox.json"
+            },
+            "Client.Assist.Thread": {
+              "dir": "in",
+              "schema": "schema/thread.json"
+            },
+            "Client.Assist.Message": {
+              "dir": "in",
+              "schema": "schema/message.json"
+            },
+            "Client.Assist.Action": {
+              "dir": "out",
+              "schema": "schema/action.json"
+            }
+          }
+        }
       ]
     },
     "capabilities": [
-      "read-output",
       "send-commands"
     ],
     "publisher": "bitmuse"
